@@ -1,0 +1,32 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+    <div class='list-group'>
+        <a href="{% url 'top_wear' 'all' %}" class='list-group-item list-group-item-action' aria-current='true'>All Toop Wears</a>
+        <a href="{% url 'top_wear' 'below500'  %}" class='list-group-item list-group-item-action' aria-current='true'>Below Rs.500</a>
+        <a href="{% url 'top_wear'  '500_1000' %}" class='list-group-item list-group-item-action' aria-current='true'>500 > Rs > 1000</a>
+        <a href="{% url 'top_wear'  '1000_2000' %}" class='list-group-item list-group-item-action' aria-current='true'>1000 > Rs > 2000</a>
+        <a href="{% url 'top_wear'  'above2000' %}" class='list-group-item list-group-item-action' aria-current='true'>Above 2000</a>
+        <a href="{% url 'top_wear'  'Khade' %}" class='list-group-item list-group-item-action' aria-current='true'>Khade</a>
+        <a href="{% url 'top_wear'  'J' %}" class='list-group-item list-group-item-action' aria-current='true'>J.</a>
+        <a href="{% url 'top_wear'  'Nee' %}" class='list-group-item list-group-item-action' aria-current='true'>Nee</a>
+    </div>
+  </div>
+  <div class="col-sm-8 offset-sm-1">
+   <div class="row">
+        {% for topwear in topwears %}
+        <div class='col-sm-4 my-4 text-center'>
+           <img src="{{topwear.product_image.url}}" alt="topwears" height="200px">
+           <div class="fw-bold">{{topwear.title}}</div>
+           <div class="fw-bold">Rs. {{topwear.discount_price}} <small class="fw-light text-decoration-line-through"> {{mobile.discount_price}}</small></div>
+        </div>
+        {% endfor %}
+   </div>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
